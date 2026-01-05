@@ -13,9 +13,19 @@
     <link rel="stylesheet" href="/assets/css/testimonials.css" />
     <link rel="stylesheet" href="/assets/css/gallery.css" />
     <link rel="stylesheet" href="/assets/css/footer.css" />
+    <link rel="stylesheet" href="/assets/css/clock.css" />
   </head>
 
   <body>
+    
+    <div class="fullscreen-clock" id="fullscreenClock">
+        <button class="clock-close" id="closeClock">×</button>
+        <div class="clock-time" id="clockTime">00:00:00</div>
+        <div class="clock-date" id="clockDate">Carregando...</div>
+    </div>
+
+    <button class="clock-button" id="openClock">🕐 Ver Relógio</button>
+    
     <div class="floating-shapes">
       <div class="shape shape1"></div>
       <div class="shape shape2"></div>
@@ -177,6 +187,59 @@
         });
 
         stats.forEach(stat => observer.observe(stat));
+        
+      const fullscreenClock = document.getElementById('fullscreenClock');
+        const openClockBtn = document.getElementById('openClock');
+        const closeClockBtn = document.getElementById('closeClock');
+        const clockTime = document.getElementById('clockTime');
+        const clockDate = document.getElementById('clockDate');
+
+        let clockInterval;
+
+        function updateClock() {
+            const now = new Date();
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clockTime.textContent = `${hours}:${minutes}:${seconds}`;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            clockDate.textContent = now.toLocaleDateString('pt-BR', options);
+        }
+
+        openClockBtn.addEventListener('click', () => {
+            fullscreenClock.classList.add('active');
+            updateClock();
+            clockInterval = setInterval(updateClock, 1000);
+        });
+
+        closeClockBtn.addEventListener('click', () => {
+            fullscreenClock.classList.remove('active');
+            clearInterval(clockInterval);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && fullscreenClock.classList.contains('active')) {
+                fullscreenClock.classList.remove('active');
+                clearInterval(clockInterval);
+            }
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.background = `rgba(255, ${Math.random() * 100 + 130}, ${Math.random() * 100 + 90}, 0.8)`;
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 2000);
+            }
+        });
     </script>
   </body>
 </html>

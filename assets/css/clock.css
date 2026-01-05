@@ -1,0 +1,74 @@
+.fullscreen-clock {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(252, 86, 31, 0.98);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.fullscreen-clock.active {
+  display: flex;
+}
+
+.clock-time {
+  font-size: 8em;
+  color: white;
+  font-weight: 800;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.clock-date {
+  font-size: 2em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.clock-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: white;
+  color: #fc561f;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.clock-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.clock-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: white;
+  color: #fc561f;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.clock-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(252, 86, 31, 0.4);
+}
