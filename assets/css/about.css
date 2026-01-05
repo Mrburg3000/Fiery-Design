@@ -2,7 +2,7 @@
   background: white;
   border-radius: 30px;
   padding: 60px;
-  margin: 80px 0;
+  margin: 80px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
   animation: fadeInUp 1s ease-out;
 }
