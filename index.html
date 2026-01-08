@@ -154,92 +154,9 @@
         </footer>
     </div>
     
-    <script>
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.background = 'linear-gradient(135deg, #ffb69e, white)';
-                setTimeout(() => {
-                    this.style.background = 'white';
-                }, 200);
-            });
-        });
 
-        document.getElementById('cta').addEventListener('click', function(e) {
-            e.preventDefault();
-            this.textContent = '🎉 Let\'s go!';
-            setTimeout(() => {
-                this.textContent = 'Start Now';
-            }, 1500);
-        });
-
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.2}s`;
-        });
-
-        const stats = document.querySelectorAll('.stat-number');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
-                }
-            });
-        });
-
-        stats.forEach(stat => observer.observe(stat));
-        
-      const fullscreenClock = document.getElementById('fullscreenClock');
-        const openClockBtn = document.getElementById('openClock');
-        const closeClockBtn = document.getElementById('closeClock');
-        const clockTime = document.getElementById('clockTime');
-        const clockDate = document.getElementById('clockDate');
-
-        let clockInterval;
-
-        function updateClock() {
-            const now = new Date();
-            
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            clockTime.textContent = `${hours}:${minutes}:${seconds}`;
-            
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            clockDate.textContent = now.toLocaleDateString('pt-BR', options);
-        }
-
-        openClockBtn.addEventListener('click', () => {
-            fullscreenClock.classList.add('active');
-            updateClock();
-            clockInterval = setInterval(updateClock, 1000);
-        });
-
-        closeClockBtn.addEventListener('click', () => {
-            fullscreenClock.classList.remove('active');
-            clearInterval(clockInterval);
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && fullscreenClock.classList.contains('active')) {
-                fullscreenClock.classList.remove('active');
-                clearInterval(clockInterval);
-            }
-        });
-        
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.9) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = e.clientX + 'px';
-                particle.style.top = e.clientY + 'px';
-                particle.style.background = `rgba(255, ${Math.random() * 100 + 130}, ${Math.random() * 100 + 90}, 0.8)`;
-                document.body.appendChild(particle);
-                
-                setTimeout(() => {
-                    particle.remove();
-                }, 2000);
-            }
-        });
-    </script>
+    <script src="/assets/scripts/card.js"></script>
+    <script src="/assets/scripts/clock.js"></script>
+    <script src="/assets/scripts/particle.js"></script>
   </body>
 </html>
