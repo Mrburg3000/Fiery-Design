@@ -2,7 +2,8 @@
   background: white;
   border-radius: 30px;
   padding: 60px;
-  margin: 80px;
+  margin: 80px auto;
+  max-width: 1360px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
   animation: fadeInUp 1s ease-out;
 }
@@ -36,4 +37,53 @@
   align-items: center;
   justify-content: center;
   font-size: 5em;
+}
+
+/* Media Queries - Mobile First */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 40px 20px;
+    margin: 40px 0;
+    border-radius: 20px;
+  }
+
+  .about-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-text {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+
+  .about-image {
+    height: 250px;
+    font-size: 3.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 25px 15px;
+    margin: 20px 0;
+  }
+
+  .about-section h2 {
+    font-size: 1.8em;
+  }
+
+  .about-text {
+    font-size: 0.9em;
+  }
+
+  .about-image {
+    height: 200px;
+    font-size: 2.5em;
+  }
 }

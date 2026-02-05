@@ -72,3 +72,54 @@
   transform: scale(1.05);
   box-shadow: 0 15px 40px rgba(252, 86, 31, 0.4);
 }
+
+/* Media Queries - Mobile First */
+@media (max-width: 768px) {
+  .clock-time {
+    font-size: 5em;
+  }
+
+  .clock-date {
+    font-size: 1.5em;
+  }
+
+  .clock-close {
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+  }
+
+  .clock-button {
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .clock-time {
+    font-size: 3em;
+  }
+
+  .clock-date {
+    font-size: 1.1em;
+  }
+
+  .clock-close {
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2em;
+  }
+
+  .clock-button {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    font-size: 0.85em;
+  }
+}
